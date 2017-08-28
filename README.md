@@ -19,7 +19,7 @@ The validator object is the source of truth for what gets validated. Any keys on
 
 
 
-```js
+```
 import validate from 'easy-validate'
 
 // target object
