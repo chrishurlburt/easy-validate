@@ -27,7 +27,8 @@ const formData = {
   name: 'George Washington',
   age: 42,
   occupation: 'astronaut',
-  birthday: '8/1/94', // won't be validated because there's no corresponding key on validator object
+  // won't be validated because there's no corresponding key on validator object
+  birthday: '8/1/94',
   hobbies: ['golf, 'cooking']
 }
 
@@ -36,9 +37,13 @@ const validator = {
   name: [name => name.length > 6, 'The name is too short.'],
   age: [age => age >= 35, 'Not old enough.'],
   occupation: [occupation => ['senator','governor'].includes(occupation), 'Not qualified.'],
-  city: [city => city.length > 3, 'Not a valid city name.'], //returns error automatically because 'city' key not defined on target object
+  
+  //returns error automatically because 'city' key not defined on target object
+  city: [city => city.length > 3, 'Not a valid city name.'],
+  
+  // validate optional values on target object
   hobbies: [
-    hobbies => (hobbies.length === 0) ? true : Array.isArray(hobbies), // validate optional values on target object
+    hobbies => (hobbies.length === 0) ? true : Array.isArray(hobbies),
     'Invalid value for hobbies.'
   ]
 }
