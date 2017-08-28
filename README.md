@@ -30,7 +30,7 @@ const formData = {
   // won't be validated because there's no corresponding key on validator object
   birthday: '8/1/94',
   hobbies: ['golf, 'cooking']
-}
+};
 
 // validator object
 const validator = {
@@ -46,11 +46,11 @@ const validator = {
     hobbies => (hobbies.length === 0) ? true : Array.isArray(hobbies),
     'Invalid value for hobbies.'
   ]
-}
+};
 
 // validate function is curried so different validator objects may be used
 // at different times against the same target object
-const errors = validate(formData)(validator)
+const errors = validate(formData)(validator);
 
 // errors:
 // ['Not old enough.', 'Not qualified.', 'Not a valid city name.']
