@@ -36,22 +36,22 @@ Each key must contain an array with two elements: a function first, followed by 
 The validator object is the source of truth for what gets validated. Any keys on the target object that do not exist on the validator object will not be validated and ignored. Conversely, keys on the validator object that do not exist on the target object will return an error.
 
 ```js
-  /* the name key will be ignored because it does not exist on the validator object. */
+  // the name key will be ignored because it does not exist on the validator object.
   const target = { name: 'chris', age: 1000 }
   
-  /* the eyeColor key will automatically return it's error because the property is missing from the target object */
+  // the eyeColor key will automatically return it's error because the property is missing from the target object
   const validator = { 
     age: [age => age < 110, 'Invalid age.'],
     eyeColor: [color => typeof color === 'string', 'Invalid eye color.']
   }
   
-  /* errors: ['Invalid age.', 'Invalid eye color.'] */
+  // errors: ['Invalid age.', 'Invalid eye color.']
   const errors = validate(target)(validator)
 ```
 
 ## Example
 
-```
+```js
 import validate from 'easy-validate'
 
 // target object
