@@ -1,6 +1,6 @@
 {
   "name": "easy-validate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple, schema-less object validation.",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,10 @@
     "javascript",
     "object",
     "form",
-    "validate"
+    "validate",
+    "react",
+    "vue",
+    "angular"
   ],
   "author": "Chris Hurlburt",
   "license": "ISC",
