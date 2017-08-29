@@ -49,6 +49,21 @@ The validator object is the source of truth for what gets validated. Any keys on
   const errors = validate(target)(validator)
 ```
 
+#### Optional fields
+
+easy-validate makes no assumptions about optional or required fields. Any logic to reflect whether or not a key on an object is optional or required is left up to the developer to implement within the validator function. The only caveat is that the key must be present on the object being validate.
+
+```js
+  // 'restaurant' is the optional key here
+  const target = { food: 'pizza', restaurant: '' }
+  
+  // validator function for restaurant allows it be a falsy value or a string, thereby making it optional
+  const validator = {
+    food: [food => food.length > 3, 'Error message here'],
+    restaurant: [restaurant => !restaurant || typeof restaurant === 'string', 'invalid restaurant name'],
+  }
+```
+
 ## Example
 
 ```js
