@@ -66,6 +66,8 @@ easy-validate makes no assumptions about optional or required fields. Any logic 
 
 ## Example
 
+This example assumes ```formData``` is a piece of data that can hypothetically be submitted as a "draft" or "published". As such, it may be validated differently for either circumstance. Note the use of the curried ```validateFormData``` function that can be called with different validators against the same target object. Here we have defined 2 validators, ```publishValidator``` and ```draftValidator```.
+
 ```js
 import validate from 'easy-validate'
 
@@ -79,8 +81,8 @@ const formData = {
   hobbies: ['golf', 'cooking']
 }
 
-// validator object
-const validator = {
+// validator with rules for "publishing" data
+const publishValidator = {
   name: [name => name.length > 6, 'The name is too short.'],
   age: [age => age >= 35, 'Not old enough.'],
   occupation: [occupation => ['senator','governor'].includes(occupation), 'Not qualified.'],
@@ -95,12 +97,24 @@ const validator = {
   ]
 }
 
+// we only care about validating the 'name' key for drafts
+const draftValidator = {
+  name: [name => name.length > 6, 'The name is too short.']
+}
+
 // validate function is curried so different validator objects may be used
 // at different times against the same target object
-const errors = validate(formData)(validator);
+const validateFormData = validate(formData)
 
-// errors:
-// ['Not old enough.', 'Not qualified.', 'Not a valid city name.']
+if (isSaveDraft) {
+  // errors:
+  // []
+  const errors = validateFormData(draftValidator)
+} else {
+  // errors:
+  // ['Not old enough.', 'Not qualified.', 'Not a valid city name.']
+  const errors = validateFormdata(publishValidator)
+}
 ```
 
 
