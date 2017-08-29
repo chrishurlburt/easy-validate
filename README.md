@@ -51,7 +51,7 @@ The validator object is the source of truth for what gets validated. Any keys on
 
 #### Optional fields
 
-easy-validate makes no assumptions about optional or required fields. Any logic to reflect whether or not a key on an object is optional or required is left up to the developer to implement within the validator function. The only caveat is that the key must be present on the object being validate.
+easy-validate makes no assumptions about optional or required fields. Any logic to reflect whether or not a key on an object is optional or required is left up to the developer to implement within the validator function. The only caveat is that the key must be present on the object being validated.
 
 ```js
   // 'restaurant' is the optional key here
