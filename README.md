@@ -61,8 +61,8 @@ const formData = {
   occupation: 'astronaut',
   // won't be validated because there's no corresponding key on validator object
   birthday: '8/1/94',
-  hobbies: ['golf, 'cooking']
-};
+  hobbies: ['golf', 'cooking']
+}
 
 // validator object
 const validator = {
@@ -78,7 +78,7 @@ const validator = {
     hobbies => (hobbies.length === 0) ? true : Array.isArray(hobbies),
     'Invalid value for hobbies.'
   ]
-};
+}
 
 // validate function is curried so different validator objects may be used
 // at different times against the same target object
