@@ -4,7 +4,8 @@
   "description": "Simple, schema-less object validation.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register"
+    "test": "mocha",
+    "prepare": "mocha"
   },
   "keywords": [
     "validation",
@@ -17,8 +18,6 @@
   "author": "Chris Hurlburt",
   "license": "ISC",
   "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.26.0",
     "mocha": "^3.5.0"
   }
 }

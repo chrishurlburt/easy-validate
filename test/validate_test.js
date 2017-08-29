@@ -1,5 +1,5 @@
-import validate from '../index.js'
-import assert from 'assert'
+const validate = require('../index.js')
+const assert = require('assert')
 
 const data = {
   name: 'Tom Brady',

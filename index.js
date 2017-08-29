@@ -10,4 +10,4 @@ const validate = values => validator => {
   }, [])
 }
 
-export default validate
+module.exports = validate
