@@ -1,5 +1,5 @@
 # easy-validate
-Tiny (< 1kb), schema-less, and dependency-less object validation for javascript
+Tiny (< 1kb min+gzipped), schema-less, and dependency-less object validation for javascript
 
 ## Overview
 
@@ -19,7 +19,7 @@ npm install easy-validate
 
 ## Usage
 
-To validate an object, simply pass the target object to validate and the validator object to the subsequently returned function. The validator object contains keys that must correspond with keys on the target object. 
+To validate an object, simply pass the target object to validate and the validator object to the subsequently returned function. The validator object contains keys that must correspond with keys on the target object.
 
 ```js
 const target = { name: 'chris' }
@@ -38,13 +38,13 @@ The validator object is the source of truth for what gets validated. Any keys on
 ```js
   // the name key will be ignored because it does not exist on the validator object.
   const target = { name: 'chris', age: 1000 }
-  
+
   // the eyeColor key will automatically return it's error because the property is missing from the target object
-  const validator = { 
+  const validator = {
     age: [age => age < 110, 'Invalid age.'],
     eyeColor: [color => typeof color === 'string', 'Invalid eye color.']
   }
-  
+
   // errors: ['Invalid age.', 'Invalid eye color.']
   const errors = validate(target)(validator)
 ```
@@ -56,7 +56,7 @@ easy-validate makes no assumptions about optional or required fields. Any logic 
 ```js
   // 'restaurant' is the optional key here
   const target = { food: 'pizza', restaurant: '' }
-  
+
   // validator function for restaurant allows it be a falsy value or a string, thereby making it optional
   const validator = {
     food: [food => food.length > 3, 'Error message here'],
@@ -86,10 +86,10 @@ const publishValidator = {
   name: [name => name.length > 6, 'The name is too short.'],
   age: [age => age >= 35, 'Not old enough.'],
   occupation: [occupation => ['senator','governor'].includes(occupation), 'Not qualified.'],
-  
+
   //returns error automatically because 'city' key not defined on target object
   city: [city => city.length > 3, 'Not a valid city name.'],
-  
+
   // validate optional values on target object
   hobbies: [
     hobbies => (hobbies.length === 0) ? true : Array.isArray(hobbies),
@@ -116,5 +116,3 @@ if (isSaveDraft) {
   const errors = validateFormdata(publishValidator)
 }
 ```
-
-
