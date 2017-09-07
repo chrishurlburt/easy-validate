@@ -1,12 +1,12 @@
 {
   "name": "easy-validate",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Simple, schema-less object validation.",
   "main": "dist/main.min.js",
   "scripts": {
     "test": "mocha",
     "prepare": "mocha && npm run build",
-    "build": "rimraf ./dist && webpack"
+    "build": "rimraf ./dist && webpack -p"
   },
   "keywords": [
     "validation",
@@ -28,5 +28,8 @@
     "mocha": "^3.5.0",
     "rimraf": "^2.6.1",
     "webpack": "^3.5.5"
+  },
+  "dependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1"
   }
 }

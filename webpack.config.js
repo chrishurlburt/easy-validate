@@ -7,7 +7,10 @@ module.exports = function () {
     output: {
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
-      filename: '[name].min.js',
+      filename: 'main.js',
+      library: 'easy-validate',
+      libraryTarget: 'umd',
+      umdNamedDefine: true
     },
     resolve: {
       modules: ['node_modules'],
@@ -23,7 +26,9 @@ module.exports = function () {
       ],
     },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin(),
+      // new webpack.optimize.UglifyJsPlugin({
+      //   mangle: false
+      // }),
     ]
   }
 }
